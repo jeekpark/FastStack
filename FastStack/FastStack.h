@@ -27,7 +27,50 @@ public:
     {
     }
 
+    bool Empty() const noexcept(noexcept(mContainer.empty()))
+    {
+        return mContainer.empty();
+    }
 
+    size_type size() const noexcept(noexcept(mContainer.size()))
+    {
+        return mContainer.size();
+    }
+
+    reference Top() noexcept(noexcept(mContainer.back()))
+    {
+        return mContainer.back();
+    }
+
+    const_reference Top() const noexcept(noexcept(mContainer.back()))
+    {
+        return mContainer.back();
+    }
+
+    void Push(const value_type& value)
+    {
+        mContainer.push_back(value);
+    }
+
+    void Push(value_type&& value)
+    {
+        mContainer.push_back(std::move(value));
+    }
+
+    void Pop() noexcept(noexcept(mContainer.pop_back()))
+    {
+        mContainer.pop_back();
+    }
+
+    void Swap(FastStack& other) noexcept(std::is_nothrow_swappable<decltype(mContainer)>::value)
+    {
+        std::swap(mContainer, other.mContainer);
+    }
+
+    const std::vector<_Type>& GetContainer() const noexcept
+    {
+        return mContainer;
+    }
 
 protected:
     std::vector<_Type> mContainer;
