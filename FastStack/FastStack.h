@@ -2,6 +2,8 @@
 
 #include <cassert>
 #include <vector>
+#include <type_traits> 
+#include <utility>
 
 template <class _Type>
 class FastStack
@@ -75,3 +77,45 @@ public:
 protected:
     std::vector<_Type> mContainer;
 };
+
+template <class _Type>
+bool operator==(const FastStack<_Type>& lhs, const FastStack<_Type>& rhs)
+{
+    return lhs.GetContainer() == rhs.GetContainer();
+}
+
+template <class _Type>
+bool operator!=(const FastStack<_Type>& lhs, const FastStack<_Type>& rhs)
+{
+    return lhs
+}
+
+template <class _Type>
+bool operator<(const FastStack<_Type>& lhs, const FastStack<_Type>& rhs)
+{
+    return lhs.GetContainer() < rhs.GetContainer();
+}
+
+template <class _Type>
+bool operator<=(const FastStack<_Type>& lhs, const FastStack<_Type>& rhs)
+{
+    return lhs.GetContainer() <= rhs.GetContainer();
+}
+
+template <class _Type>
+bool operator>(const FastStack<_Type>& lhs, const FastStack<_Type>& rhs)
+{
+    return lhs.GetContainer() > rhs.GetContainer();
+}
+
+template <class _Type>
+bool operator>=(const FastStack<_Type>& lhs, const FastStack<_Type>& rhs)
+{
+    return lhs.GetContainer() >= rhs.GetContainer();
+}
+
+template <class _Type>
+void Swap(FastStack<_Type>& lhs, FastStack<_Type>& rhs) noexcept(noexcept(lhs.Swap(rhs)))
+{
+    lhs.Swap(rhs);
+}
