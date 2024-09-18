@@ -29,6 +29,16 @@ public:
     {
     }
 
+    void Reserve(size_type capacity)
+    {
+        mContainer.reserve(capacity);
+    }
+
+    size_type Capacity() const noexcept(noexcept(mContainer.capacity()))
+    {
+        return mContainer.capacity();
+    }
+
     bool Empty() const noexcept(noexcept(mContainer.empty()))
     {
         return mContainer.empty();

@@ -1,22 +1,9 @@
 #include <stack>
 #include <deque>
-
+#include <vector>
 int main()
 {
-    std::stack<int> stack;
-    stack.push(1);
-    stack.push(2);
-    stack.push(3);
-    stack.push(4);
-    stack.push(5);
-
-    stack.size();
-
-    while (!stack.empty())
-    {
-        int value = stack.top();
-        stack.pop();
-    }
-
+    std::vector<int> vector = { 1, 2, 3, 4, 5 };
+    vector.capacity();
     return 0;
 }
