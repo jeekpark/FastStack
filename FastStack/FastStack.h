@@ -85,7 +85,7 @@ public:
         mContainer.pop_back();
     }
 
-    void Swap(FastStack& other) noexcept(std::is_nothrow_swappable<decltype(mContainer)>::value)
+    void Swap(FastStack& other) noexcept(noexcept(std::swap(mContainer, other.mContainer)))
     {
         std::swap(mContainer, other.mContainer);
     }
@@ -108,7 +108,7 @@ bool operator==(const FastStack<_Type>& lhs, const FastStack<_Type>& rhs)
 template <class _Type>
 bool operator!=(const FastStack<_Type>& lhs, const FastStack<_Type>& rhs)
 {
-    return lhs
+    return lhs.GetContainer() != rhs.GetContainer();
 }
 
 template <class _Type>
