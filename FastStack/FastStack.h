@@ -39,12 +39,17 @@ public:
         return mContainer.capacity();
     }
 
+    void Clear() noexcept(noexcept(mContainer.clear()))
+    {
+        mContainer.clear();
+    }
+
     bool Empty() const noexcept(noexcept(mContainer.empty()))
     {
         return mContainer.empty();
     }
 
-    size_type size() const noexcept(noexcept(mContainer.size()))
+    size_type Size() const noexcept(noexcept(mContainer.size()))
     {
         return mContainer.size();
     }
@@ -67,6 +72,12 @@ public:
     void Push(value_type&& value)
     {
         mContainer.push_back(std::move(value));
+    }
+
+    template <class... _Args>
+    void Emplace(_Args&&... args)
+    {
+        mContainer.emplace_back(std::forward<_Args>(args)...);
     }
 
     void Pop() noexcept(noexcept(mContainer.pop_back()))
