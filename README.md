@@ -1,7 +1,7 @@
 # FastStack
 
 std::stack의 변형 스택입니다.
-- 내부 컨테이너: std::vector<T> 고정
+- 내부 컨테이너: std::vector<T>로 고정함.
 - 추가 기능
   - Reserve: 메모리 재할당을 방지하기 위한 메모리 확보 함수
   - Capacity: 최대로 Push할 수 있는 요소의 수
